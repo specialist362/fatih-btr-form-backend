@@ -68,7 +68,7 @@ app.post('/api/btr-applications', async (req, res) => {
         // Basit bir benzersiz Başvuru ID'si oluşturma
         // Gerçek projelerde daha sağlam, çakışmayan ID'ler üretmek önemlidir
         const count = await Application.countDocuments();
-        const newApplicationId = `BTR-<span class="math-inline">\{new Date\(\)\.getFullYear\(\)\}\-</span>{(count + 1).toString().padStart(4, '0')}`;
+        const newApplicationId = `BTR-${new Date().getFullYear()}-${(count + 1).toString().padStart(4, '0')}`;
 
         // Yeni başvuru dokümanını oluştur
         const newApplication = new Application({
